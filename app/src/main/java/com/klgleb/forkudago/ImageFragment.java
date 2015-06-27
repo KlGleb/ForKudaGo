@@ -3,25 +3,24 @@ package com.klgleb.forkudago;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * Created by klgleb on 27.06.15.
- *
- * Main fragment with slider and list.
+ * <p/>
+ * Fragment that contains images (from drawable).
  */
-public class MyFragment extends Fragment {
+public class ImageFragment extends Fragment {
 
-    public static final String USE_REST = "use_rest";
-    private ViewPager mPager;
+    public static final String IMAGE_NUM = "image_num";
 
-    public static MyFragment newInstance(boolean useRest) {
-        MyFragment fragment = new MyFragment();
+    public static ImageFragment newInstance(int imageNum) {
+        ImageFragment fragment = new ImageFragment();
         Bundle args = new Bundle();
-        args.putBoolean(USE_REST, useRest);
+        args.putInt(IMAGE_NUM, imageNum);
         fragment.setArguments(args);
 
         return fragment;
@@ -30,11 +29,17 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ImageView view = (ImageView) inflater.inflate(R.layout.fragment_image, container, false);
 
-        mPager = (ViewPager) view.findViewById(R.id.pager);
+        int[] arr = {R.drawable.img1,
+                R.drawable.img2,
+                R.drawable.img3,
+                R.drawable.img4,
+                R.drawable.img5};
 
-        mPager.setAdapter(new ImageAdapter(getFragmentManager()));
+        view.setImageResource(arr[getArguments().getInt(IMAGE_NUM)]);
+
+
 
         return view;
     }
