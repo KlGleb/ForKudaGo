@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ForKudaGo</string>
+
+    <string name="title_section1">С испльзованием Rest API</string>
+    <string name="title_section2">Без использования Rest API</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
