@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.viewpagerindicator.UnderlinePageIndicator;
+
 /**
  * Created by klgleb on 27.06.15.
  *
@@ -16,7 +18,6 @@ import android.view.ViewGroup;
 public class MyFragment extends Fragment {
 
     public static final String USE_REST = "use_rest";
-    private ViewPager mPager;
 
     public static MyFragment newInstance(boolean useRest) {
         MyFragment fragment = new MyFragment();
@@ -32,9 +33,15 @@ public class MyFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        mPager = (ViewPager) view.findViewById(R.id.pager);
+        ViewPager mPager = (ViewPager) view.findViewById(R.id.pager);
 
         mPager.setAdapter(new ImageAdapter(getFragmentManager()));
+
+
+        UnderlinePageIndicator indicator = (UnderlinePageIndicator)view.findViewById(R.id.indicator);
+        indicator.setViewPager(mPager);
+        indicator.setFades(false);
+        indicator.setSelectedColor(getResources().getColor(R.color.main_color));
 
         return view;
     }
